@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import com.receipt.ReceiptScanner;
 
+
+
+// not much use out of the unit testing
+// leaving it here for any reference
 class ReceiptScannerTest {
 
     @Test
@@ -11,8 +15,8 @@ class ReceiptScannerTest {
         ReceiptScanner scanner = new ReceiptScanner("unused-for-this-test");
 
         String fakeOcrOutput =
-                "Chicken Tacos       12.99\n" +
-                "Veggie Burrito      10.50\n" +
+                "Chicken             12.99\n" +
+                "Veggies             10.50\n" +
                 "Subtotal            23.49\n" +
                 "Tax                  1.88\n" +
                 "Total               25.37\n";

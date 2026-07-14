@@ -21,8 +21,8 @@ import net.sourceforge.tess4j.TesseractException;
  * structured, formatted breakdown of items, subtotal, tax, and total.
  *
  * Parsing OCR text into a Receipt is handled by a chain of ReceiptParser
- * strategies (see nested classes below) — different stores/POS systems
- * format receipts differently, so we try each known format and keep
+ * strategies with nested classes. Attempt to differentiate different stores/POS system with differently
+ * formatted receipts, so try each known format and keep
  * whichever parse looks most plausible (most items found).
  */
 
@@ -44,6 +44,13 @@ import net.sourceforge.tess4j.TesseractException;
         
 */
 
+
+// INCLUDES:
+
+// Image Preprocessing
+// OCR Call
+// RegEX logic
+// Return data
 public class ReceiptScanner {
 
     private final Tesseract tesseract;
@@ -58,15 +65,15 @@ public class ReceiptScanner {
         tesseract = new Tesseract();
         tesseract.setDatapath(tessDataPath);
         tesseract.setLanguage("eng");
-        // Page segmentation mode 6 = "assume a single uniform block of text"
-        // works well for receipts (as opposed to full-page documents)
+        // Page segmentation mode 6 = assume a single block of text
+        // apparently works well for receipts (as opposed to full-page documents)
         tesseract.setPageSegMode(6);
         // Tell Tesseract to assume 300 DPI rather than guessing from a
-        // low-res phone photo, which is what causes "image too small" errors
+        // low-res phone photo, working solution for current "image too small" errors
         tesseract.setVariable("user_defined_dpi", "300");
     }
 
-    /** Runs OCR on the given image and returns raw extracted text. */
+    // Runs OCR on the given image and returns raw extracted text.
     public String extractText(File imageFile) throws TesseractException {
         try {
             BufferedImage preprocessed = preprocess(ImageIO.read(imageFile));
