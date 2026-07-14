@@ -1,0 +1,8 @@
+com\receipt\ReceiptScanner$ReceiptParserChain.class
+com\receipt\ReceiptScanner$LineItem.class
+com\receipt\ReceiptScanner$ReceiptParser.class
+com\receipt\ReceiptScanner$SimplePriceLineParser.class
+com\receipt\ReceiptScanner$BarcodeFormatParser.class
+com\receipt\Main.class
+com\receipt\ReceiptScanner.class
+com\receipt\ReceiptScanner$Receipt.class
