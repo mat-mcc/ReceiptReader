@@ -1,6 +1,7 @@
 package com.receipt;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.io.File;
@@ -52,12 +53,16 @@ public class ReceiptEditorFrame extends JFrame {
     private final JLabel unassignedLabel;
     private final double[] lastPersonTotals;
 
+    public static Color RGB = new Color(82, 110, 135);
+
     // boolean against checkbox listeners firing while loading row split. */
     private boolean loadingSelection = false;
 
     // CONSTRUCTOR
     public ReceiptEditorFrame(String tessDataPath, int peeps) {
-        super("Receipt Splitter");
+        super("Matt's Receipt Splitter App || VERSION 1.0 || July 13th, 2026");
+        //getContentPane().setBackground(RGB);
+        //Color C = new COLOR(245, 245, 250);
         NUM_PEOPLE = peeps;
         this.personNameFields = new PlaceholderTextField[NUM_PEOPLE];
         this.splitCheckBoxes = new JCheckBox[NUM_PEOPLE];
@@ -82,10 +87,30 @@ public class ReceiptEditorFrame extends JFrame {
             }
         });
 
+
+
         JButton scanButton = new JButton("Scan Receipt");
+        scanButton.setBackground(RGB);
+        scanButton.setForeground(Color.WHITE);
+        scanButton.setFocusPainted(false);
+
+
         JButton addButton = new JButton("Add Item");
+        addButton.setBackground(RGB);
+        addButton.setForeground(Color.WHITE);
+        addButton.setFocusPainted(false);
+
+
         JButton removeButton = new JButton("Remove Selected");
+        removeButton.setBackground(RGB);
+        removeButton.setForeground(Color.WHITE);
+        removeButton.setFocusPainted(false);
+
+
         JButton continueButton = new JButton("Continue");
+        continueButton.setBackground(RGB);
+        continueButton.setForeground(Color.WHITE);
+        continueButton.setFocusPainted(false);
 
         subtotalField = new JTextField("0.00", 8);
         taxField = new JTextField("0.00", 8);
@@ -217,7 +242,15 @@ public class ReceiptEditorFrame extends JFrame {
 
         JPanel quickButtons = new JPanel(new FlowLayout(FlowLayout.LEFT, 4, 0));
         JButton allButton = new JButton("All");
+        allButton.setBackground(RGB);
+        allButton.setForeground(Color.WHITE);
+        allButton.setFocusPainted(false);
+
+
         JButton noneButton = new JButton("None");
+        noneButton.setBackground(RGB);
+        noneButton.setForeground(Color.WHITE);
+        noneButton.setFocusPainted(false);
 
         allButton.addActionListener(e -> setSelectedRowSplit(true));
         noneButton.addActionListener(e -> setSelectedRowSplit(false));
